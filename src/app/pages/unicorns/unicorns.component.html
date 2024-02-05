@@ -1,0 +1,9 @@
+<h1>Unicorns</h1>
+
+<ul>
+  @for (unicorn of unicorns; track unicorn.id) {
+    <li>
+      <a [routerLink]="['/unicorn', unicorn.id]">{{ unicorn.name }}</a>
+    </li>
+  }
+</ul>
