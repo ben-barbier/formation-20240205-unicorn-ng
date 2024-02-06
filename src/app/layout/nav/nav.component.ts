@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CartInformationComponent } from './cart-information/cart-information.component';
 
 @Component({
   selector: 'app-nav',
@@ -24,6 +25,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     AsyncPipe,
     RouterOutlet,
     RouterLink,
+    CartInformationComponent,
   ],
 })
 export class NavComponent {

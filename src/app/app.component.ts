@@ -9,6 +9,4 @@ import { NavComponent } from './layout/nav/nav.component';
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, NavComponent],
 })
-export class AppComponent {
-  title: string = 'unicorn-app';
-}
+export class AppComponent {}
