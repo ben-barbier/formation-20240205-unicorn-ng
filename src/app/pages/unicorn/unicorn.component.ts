@@ -10,7 +10,7 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './unicorn.component.html',
   styleUrl: './unicorn.component.scss',
 })
-export class UnicornComponent implements OnInit {
+export default class UnicornComponent implements OnInit {
   @Input({ required: true, transform: numberAttribute }) id!: number;
 
   public unicorn?: UnicornDTO;

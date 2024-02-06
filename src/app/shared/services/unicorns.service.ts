@@ -67,15 +67,15 @@ export class UnicornsService {
     return this.http.get<UnicornDTO>(`http://localhost:3000/unicorns/${id}`);
   }
 
-  public addUnicorn(unicorn: UnicornDTO): Observable<UnicornDTO> {
-    return this.http.post<UnicornDTO>('http://localhost:3000/api/unicorns', unicorn);
+  public addUnicorn(unicorn: UnicornDTO): Observable<void> {
+    return this.http.post<void>('http://localhost:3000/unicorns', unicorn);
   }
 
-  public deleteUnicorn(id: number): Observable<UnicornDTO> {
-    return this.http.delete<UnicornDTO>(`http://localhost:3000/api/unicorns/${id}`);
+  public deleteUnicorn(unicorn: UnicornDTO): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/unicorns/${unicorn.id}`);
   }
 
-  public updateUnicorn(unicorn: UnicornDTO): Observable<UnicornDTO> {
-    return this.http.put<UnicornDTO>(`http://localhost:3000/api/unicorns/${unicorn.id}`, unicorn);
+  public updateUnicorn(unicorn: UnicornDTO): Observable<void> {
+    return this.http.put<void>(`http://localhost:3000/unicorns/${unicorn.id}`, unicorn);
   }
 }

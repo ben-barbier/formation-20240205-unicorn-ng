@@ -11,12 +11,18 @@ import { Unicorn } from '../../shared/models/unicorn.model';
   templateUrl: './unicorns.component.html',
   styleUrl: './unicorns.component.scss',
 })
-export class UnicornsComponent {
+export default class UnicornsComponent {
   public unicorns: Unicorn[] = [];
 
   constructor(private unicornsService: UnicornsService) {
     this.unicornsService.getAllWithCapacitiesLabels().subscribe(unicorns => {
       this.unicorns = unicorns;
+    });
+  }
+
+  public removeUnicorn(unicorn: Unicorn) {
+    this.unicornsService.deleteUnicorn(unicorn).subscribe(() => {
+      this.unicorns = this.unicorns.filter(u => u.id !== unicorn.id);
     });
   }
 }
