@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CartService } from '../../../shared/features/cart.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { CartSelectors } from '../../../store/selectors/cart.selectors';
 
 @Component({
   selector: 'app-cart-information',
@@ -12,7 +12,7 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './cart-information.component.scss',
 })
 export class CartInformationComponent {
-  cartSize$: Observable<number> = this.cartService.cart$.pipe(map(unicorns => unicorns.length));
+  cartSize$: Observable<number> = this.cartSelectors.cartUnicorn$.pipe(map(unicorns => unicorns.length));
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartSelectors: CartSelectors) {}
 }

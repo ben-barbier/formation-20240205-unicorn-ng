@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -14,12 +14,12 @@ import { RouterLink } from '@angular/router';
 import { Unicorn } from '../../../shared/models/unicorn.model';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { CartService } from '../../../shared/features/cart.service';
-import { Observable, switchMap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, Observable, map, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUnicornComponent } from '../dialogs/edit-unicorn/edit-unicorn.component';
 import { UnicornsService } from '../../../shared/services/unicorns.service';
+import { CartDispatchers } from '../../../store/dispatchers/cart.dispatchers';
+import { CartSelectors } from '../../../store/selectors/cart.selectors';
 
 @Component({
   selector: 'app-unicorn-card',
@@ -41,19 +41,22 @@ import { UnicornsService } from '../../../shared/services/unicorns.service';
   templateUrl: './unicorn-card.component.html',
   styleUrl: './unicorn-card.component.scss',
 })
-export class UnicornCardComponent {
+export class UnicornCardComponent implements OnInit {
   @Input({ required: true }) unicorn!: Unicorn;
   @Output() delete = new EventEmitter<Unicorn>();
 
-  isInCart$: Observable<boolean> = this.cartService.cart$.pipe(
-    map(unicorns => unicorns.some(u => u.id === this.unicorn.id))
-  );
+  isInCart$!: Observable<boolean>;
 
   constructor(
-    private cartService: CartService,
     private dialog: MatDialog,
-    private unicornsService: UnicornsService
+    private unicornsService: UnicornsService,
+    private cartDispatchers: CartDispatchers,
+    private cartSelectors: CartSelectors
   ) {}
+
+  ngOnInit(): void {
+    this.isInCart$ = this.cartSelectors.unicornIsInCart$(this.unicorn.id);
+  }
 
   public openEditDialog() {
     this.dialog
@@ -70,7 +73,13 @@ export class UnicornCardComponent {
   }
 
   public toggleToCart(unicorn: Unicorn) {
-    this.cartService.toggleToCart(unicorn);
+    this.isInCart$.pipe(first()).subscribe(isInCart => {
+      if (isInCart) {
+        this.cartDispatchers.removeUnicornFromCart(unicorn);
+      } else {
+        this.cartDispatchers.addUnicornToCart(unicorn);
+      }
+    });
   }
 
   public deleteUnicorn(unicorn: Unicorn) {

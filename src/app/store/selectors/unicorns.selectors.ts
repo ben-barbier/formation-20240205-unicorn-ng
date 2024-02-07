@@ -7,7 +7,7 @@ import { UnicornDTO } from '../../shared/dto/unicorn.dto';
 
 // selectors
 const selectUnicorns = createFeatureSelector<UnicornDTO[]>('unicorns');
-const selectUnicornsWithCapacities = createSelector(
+export const selectUnicornsWithCapacities = createSelector(
   selectUnicorns,
   selectCapacities,
   (unicorns: UnicornDTO[], capacities: CapacityDTO[]): Unicorn[] =>
