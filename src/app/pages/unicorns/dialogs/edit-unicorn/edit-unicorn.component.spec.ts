@@ -8,10 +8,9 @@ describe('EditUnicornComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditUnicornComponent]
-    })
-    .compileComponents();
-    
+      imports: [EditUnicornComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(EditUnicornComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

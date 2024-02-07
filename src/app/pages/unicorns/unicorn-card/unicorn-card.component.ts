@@ -61,7 +61,7 @@ export class UnicornCardComponent {
       .afterClosed()
       .pipe(
         switchMap((updatedUnicorn: Unicorn) =>
-          this.unicornsService.updateUnicorn(updatedUnicorn).pipe(map(() => updatedUnicorn))
+          this.unicornsService.update(updatedUnicorn).pipe(map(() => updatedUnicorn))
         )
       )
       .subscribe(updatedUnicorn => {

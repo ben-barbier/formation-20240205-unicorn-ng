@@ -63,19 +63,19 @@ export class UnicornsService {
     );
   }
 
-  public getUnicorn(id: number): Observable<UnicornDTO> {
+  public get(id: number): Observable<UnicornDTO> {
     return this.http.get<UnicornDTO>(`http://localhost:3000/unicorns/${id}`);
   }
 
-  public addUnicorn(unicorn: UnicornDTO): Observable<void> {
+  public add(unicorn: UnicornDTO): Observable<void> {
     return this.http.post<void>('http://localhost:3000/unicorns', unicorn);
   }
 
-  public deleteUnicorn(unicorn: UnicornDTO): Observable<void> {
+  public delete(unicorn: UnicornDTO): Observable<void> {
     return this.http.delete<void>(`http://localhost:3000/unicorns/${unicorn.id}`);
   }
 
-  public updateUnicorn(unicorn: UnicornDTO): Observable<void> {
+  public update(unicorn: UnicornDTO): Observable<void> {
     return this.http.put<void>(`http://localhost:3000/unicorns/${unicorn.id}`, unicorn);
   }
 }

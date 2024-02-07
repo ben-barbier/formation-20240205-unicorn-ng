@@ -1,3 +1,3 @@
-@for (unicorn of unicorns; track unicorn.id) {
+@for (unicorn of unicorns$ | async; track unicorn.id) {
   <app-unicorn-card [unicorn]="unicorn" (delete)="removeUnicorn($event)"></app-unicorn-card>
 }

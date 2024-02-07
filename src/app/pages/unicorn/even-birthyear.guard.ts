@@ -10,6 +10,6 @@ export const evenBirthyearGuard: CanActivateFn = (route): Observable<true | UrlT
   const router = inject(Router);
 
   return unicornService
-    .getUnicorn(unicornId)
+    .get(unicornId)
     .pipe(map(unicorn => (unicorn.birthyear % 2 === 0 ? true : router.createUrlTree(['/not-found']))));
 };

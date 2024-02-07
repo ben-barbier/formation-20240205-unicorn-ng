@@ -18,7 +18,7 @@ export default class UnicornComponent implements OnInit {
   constructor(private unicornsService: UnicornsService) {}
 
   ngOnInit(): void {
-    this.unicornsService.getUnicorn(this.id).subscribe(unicorn => {
+    this.unicornsService.get(this.id).subscribe(unicorn => {
       this.unicorn = unicorn;
     });
   }
