@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './layout/nav/nav.component';
+import { CapacitiesDispatchers } from './store/dispatchers/capacities.dispatchers';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,8 @@ import { NavComponent } from './layout/nav/nav.component';
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, NavComponent],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(capacitiesDispatchers: CapacitiesDispatchers) {
+    capacitiesDispatchers.loadCapacities();
+  }
+}

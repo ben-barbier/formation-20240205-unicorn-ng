@@ -8,6 +8,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { UnicornsEffects } from './store/effects/unicorns.effects';
 import { reducers } from './store/reducers';
+import { CapacitiesEffects } from './store/effects/capacities.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,6 @@ export const appConfig: ApplicationConfig = {
         strictActionTypeUniqueness: true,
       },
     }),
-    provideEffects([UnicornsEffects]),
+    provideEffects([UnicornsEffects, CapacitiesEffects]),
   ],
 };

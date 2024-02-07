@@ -12,4 +12,8 @@ export class CapacitiesService {
   public getCapacity(id: number): Observable<CapacityDTO> {
     return this.http.get<CapacityDTO>(`http://localhost:3000/capacities/${id}`);
   }
+
+  public getCapacities(): Observable<CapacityDTO[]> {
+    return this.http.get<CapacityDTO[]>(`http://localhost:3000/capacities`);
+  }
 }

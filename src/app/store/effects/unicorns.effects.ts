@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { UnicornsService } from '../../shared/services/unicorns.service';
-import * as UnicornsActions from '../actions/unicorns.actions';
+import { unicornsActions } from '../actions/unicorns.actions';
 
 @Injectable()
 export class UnicornsEffects {
@@ -14,11 +14,11 @@ export class UnicornsEffects {
 
   getUnicorns$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(UnicornsActions.getUnicorns),
+      ofType(unicornsActions.getUnicorns),
       switchMap(() =>
         this.unicornsService.getAllWithCapacitiesLabels().pipe(
-          map(unicorns => UnicornsActions.getUnicornsSuccess({ unicorns })),
-          catchError(() => of(UnicornsActions.getUnicornsError()))
+          map(unicorns => unicornsActions.getUnicornsSuccess({ unicorns })),
+          catchError(() => of(unicornsActions.getUnicornsError()))
         )
       )
     );
@@ -26,11 +26,11 @@ export class UnicornsEffects {
 
   getUnicorn$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(UnicornsActions.getUnicorn),
+      ofType(unicornsActions.getUnicorn),
       switchMap(action =>
         this.unicornsService.get(action.id).pipe(
-          map(unicorn => UnicornsActions.getUnicornSuccess({ unicorn })),
-          catchError(() => of(UnicornsActions.getUnicornError()))
+          map(unicorn => unicornsActions.getUnicornSuccess({ unicorn })),
+          catchError(() => of(unicornsActions.getUnicornError()))
         )
       )
     );
@@ -38,11 +38,11 @@ export class UnicornsEffects {
 
   updateUnicorn$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(UnicornsActions.updateUnicorn),
+      ofType(unicornsActions.updateUnicorn),
       switchMap(action =>
         this.unicornsService.update(action.unicorn).pipe(
-          map(() => UnicornsActions.updateUnicornSuccess({ unicorn: action.unicorn })),
-          catchError(() => of(UnicornsActions.updateUnicornError()))
+          map(() => unicornsActions.updateUnicornSuccess({ unicorn: action.unicorn })),
+          catchError(() => of(unicornsActions.updateUnicornError()))
         )
       )
     );
@@ -50,11 +50,11 @@ export class UnicornsEffects {
 
   deleteUnicorn$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(UnicornsActions.deleteUnicorn),
+      ofType(unicornsActions.deleteUnicorn),
       switchMap(action =>
         this.unicornsService.delete(action.unicorn).pipe(
-          map(() => UnicornsActions.deleteUnicornSuccess({ unicorn: action.unicorn })),
-          catchError(() => of(UnicornsActions.deleteUnicornError()))
+          map(() => unicornsActions.deleteUnicornSuccess({ unicorn: action.unicorn })),
+          catchError(() => of(unicornsActions.deleteUnicornError()))
         )
       )
     );
