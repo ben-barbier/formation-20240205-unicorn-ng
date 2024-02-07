@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CartInformationComponent } from './cart-information.component';
 
 describe('CartInformationComponent', () => {

@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { CapacitiesService } from './capacities.service';
 
 describe('CapacitiesService', () => {

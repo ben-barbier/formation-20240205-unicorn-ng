@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EditUnicornComponent } from './edit-unicorn.component';
 
 describe('EditUnicornComponent', () => {

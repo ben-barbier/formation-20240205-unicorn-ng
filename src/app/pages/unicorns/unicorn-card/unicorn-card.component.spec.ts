@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { UnicornCardComponent } from './unicorn-card.component';
 
 describe('UnicornCardComponent', () => {

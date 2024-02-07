@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { CanActivateFn } from '@angular/router';
-
 import { evenBirthyearGuard } from './even-birthyear.guard';
 
 describe('evenBirthyearGuard', () => {

@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { UnicornsService } from './unicorns.service';
 
 describe('UnicornsService', () => {
