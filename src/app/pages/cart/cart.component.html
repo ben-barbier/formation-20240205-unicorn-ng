@@ -1,5 +1,12 @@
-<p>cart works!</p>
-<ul>
-  <li>Unicorn 1 <button>🗑️</button></li>
-  <li>Unicorn 2 <button>🗑️</button></li>
-</ul>
+<h1>Cart</h1>
+
+<mat-list role="list">
+  @for (unicorn of cart$ | async; track unicorn.id) {
+    <mat-list-item role="listitem">
+      {{ unicorn.name }}
+      <button mat-icon-button color="warn" (click)="removeUnicornFromCart(unicorn)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  }
+</mat-list>

@@ -8,7 +8,7 @@ const selectCapacity = (id: number) =>
   createSelector(selectCapacities, (state: CapacityDTO[]) => state.find(c => c.id === id));
 
 @Injectable({ providedIn: 'root' })
-export class UnicornsSelectors {
+export class CapacitiesSelectors {
   constructor(private store: Store) {}
 
   capacities$ = this.store.select(selectCapacities);
